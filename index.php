@@ -18,7 +18,6 @@ try {
     $advisor->advise($request->getParticipants(), $request->getHolidayType(), $request->getSenderType());
 } catch (Exception $exception) {
     ExceptionHandler::handle($exception);
-} finally {
-    exit();
 }
+exit();
 

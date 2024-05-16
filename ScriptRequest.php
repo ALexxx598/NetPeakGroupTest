@@ -80,13 +80,13 @@ class ScriptRequest
 
         if (empty($holidayType) || HolidayType::tryFrom($holidayType) === null) {
             throw new ValidationException(
-                sprintf("holidayType must present and be one of %s.", implode(", ",HolidayType::cases()))
+                sprintf("holidayType must present and be one of: %s.", implode(", ", HolidayType::getTypes()))
             );
         }
 
-        if (empty($senderType) || SenderType::from($senderType) === null) {
+        if (empty($senderType) || SenderType::tryFrom($senderType) === null) {
             throw new ValidationException(
-                sprintf("senderType must present and be one of %s.", implode(", ",SenderType::cases()))
+                sprintf("senderType must present and be one of: %s.", implode(", ",SenderType::getTypes()))
             );
         }
     }
