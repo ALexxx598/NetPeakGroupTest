@@ -2,7 +2,11 @@
 
 class ExceptionHandler
 {
-    public static function handle(Exception $exception)
+    /**
+     * @param Exception $exception
+     * @return void
+     */
+    public static function handle(Exception $exception): void
     {
         echo $exception->getMessage() . "\n";
     }

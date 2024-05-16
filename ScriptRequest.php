@@ -6,6 +6,11 @@ require_once "HolidayType.php";
 
 class ScriptRequest
 {
+    /**
+     * @param int $participants
+     * @param HolidayType $holidayType
+     * @param SenderType $senderType
+     */
     private function __construct(
         private int $participants,
         private HolidayType $holidayType,
@@ -13,6 +18,11 @@ class ScriptRequest
     ) {
     }
 
+    /**
+     * @param array $argv
+     * @return self
+     * @throws ValidationException
+     */
     public static function make(
         array $argv
     ): self {
@@ -25,21 +35,35 @@ class ScriptRequest
         );
     }
 
+    /**
+     * @return int
+     */
     public function getParticipants(): int
     {
         return $this->participants;
     }
 
+    /**
+     * @return HolidayType
+     */
     public function getHolidayType(): HolidayType
     {
         return $this->holidayType;
     }
 
+    /**
+     * @return SenderType
+     */
     public function getSenderType(): SenderType
     {
         return $this->senderType;
     }
 
+    /**
+     * @param array $argv
+     * @return void
+     * @throws ValidationException
+     */
     private static function validate(array $argv): void
     {
         $participants = intval($argv[1] ?? null);
